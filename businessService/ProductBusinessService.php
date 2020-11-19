@@ -11,7 +11,6 @@ class ProductBusinessService
     }
 
     public function findProductByID($p){
-        $products = Array();
         $service = new ProductDataService();
         $products = $service->findProductByID($p);
         return $products;
@@ -37,5 +36,19 @@ class ProductBusinessService
         $products = $service->findProductByPrice($p);
         return $products;
     }
+
+    public function updateProduct($id, $n, $d, $p){
+        $service = new ProductDataService();
+        $service->updateProduct($id, $n, $d, $p);
+    }
+    public function deleteProduct($id){
+        $service = new ProductDataService();
+        $service->deleteProduct($id);
+    }
+    public function createProduct($n, $d, $p){
+        $service = new ProductDataService();
+        $service->createProduct($n, $d, $p);
+    }
+
 
 }

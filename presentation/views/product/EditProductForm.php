@@ -1,10 +1,23 @@
+<?php
+include_once '../../../header.php';
+require_once '../../../Autoloader.php';
+
+$productID = $_POST['productID'];
+$service = new ProductBusinessService();
+
+$product = $service->findProductByID($productID);
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <style>
-        form {
+        .inputForm {
             width: 500px;
             margin: 0 auto;
         }
@@ -20,28 +33,26 @@
     <title>Registration</title>
 </head>
 <body>
-<h1>Registration</h1>
-    <form action="RegistrationHandler.php" method="post">
-        <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="text" class="form-control" id="firstName" name="firstName">
-        </div>
-        <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input type="text" class="form-control" id="lastName" name="lastName">
+<h1>Edit Product</h1>
+<form class="inputForm" action="EditProductHandler.php" method="post">
+    <div class="form-group">
+        <input type="hidden" class="form-control" id="productID" name="productID" value="<?php echo $product->getId() ?>" >
     </div>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" >
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password">
-        </div>
-
+    <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input type="text" class="form-control" id="productName" name="productName" value="<?php echo $product->getProductName() ?>" >
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description" name="description"value="<?php echo $product->getDescription() ?>">
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" id="price" name="price" value="<?php echo $product->getPrice() ?>" >
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 
-    </form>
+</form>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

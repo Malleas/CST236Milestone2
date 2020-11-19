@@ -1,5 +1,5 @@
 <?php
-include_once '../header.php';
+include_once '../../../header.php';
 require_once "../../../Autoloader.php";
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -9,13 +9,12 @@ $lastName = $_POST['lastName'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$service = new RegistrationBusinessService();
+$service = new UserBusinessService();
 
 
-if($service->registerUser($firstName, $lastName, $username, $password)){
-    $_SESSION['principal'] = true;
-    include '../searchPortal/Search.html';
+if($service->createUser($firstName, $lastName, $username, $password)){
+    include '../../../index.php';
 }else{
-    $_SESSION['principal'] = false;
     include '../login/LoginFailed.php';
 }
+

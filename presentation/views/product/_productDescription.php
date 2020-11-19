@@ -1,11 +1,15 @@
 <?php
+
+include_once '../../../header.php';
+require_once '../../../Autoloader.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-require_once '../../../Autoloader.php';
 $productID = $_POST['productID'];
 
 $service = new ProductBusinessService();
 $product = $service->findProductByID($productID);
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,13 +22,13 @@ $product = $service->findProductByID($productID);
 <div class="card" style="width: 18rem;">
     <div class="card-body">
         <?php
-        for ($i = 0; $i < count($product); $i++){
-            echo "<h5 class='card-title' align='center'>".$product[$i]['PRODUCTNAME']."</h5>";
+
+            echo "<h5 class='card-title' align='center'>".$product->getProductName()."</h5>";
             echo "<img class='card-img-top' src='https://picsum.photos/200' alt='Card image cap'>";
-            echo "<p class='card=text'>".$product[$i]['DESCRIPTION']."</p>";
-            echo "<p class='card=text'>"."$".$product[$i]['PRICE']."</p>";
-            echo "<a href='../searchPortal/_productSearchResults.php' class='card-link'>Products</a>>";
-        }
+            echo "<p class='card=text'>".$product->getDescription()."</p>";
+            echo "<p class='card=text'>"."$".$product->getPrice()."</p>";
+            echo "<a href='../searchPortal/_productSearchResults.php' class='card-link'>Products</a>";
+
         ?>
     </div>
 </div>
