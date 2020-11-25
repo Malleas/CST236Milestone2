@@ -15,7 +15,8 @@ if($service->authUser($username, $password)){
     $_SESSION['userID'] = $user->getId();
     $_SESSION['role'] = $user->getRole();
     $_SESSION['valid'] = 1;
-    include '../../../index.php';
+    header ("location:/Milestone/index.php");
+   // include '../../../index.php';
 }else{
     $_SESSION['loginStatus'] = false;
     include '../../views/login/LoginFailed.php';

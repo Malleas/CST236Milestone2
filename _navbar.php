@@ -14,7 +14,7 @@
             <?php
             if(isset($_SESSION['userID']) && $_SESSION['role'] == 4){
                 ?>
-                <<li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
                         Admin
@@ -25,7 +25,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/Milestone/presentation/views/product/NewProduct.php">Add New Product</a>
                     </div>
-                </li>>
+                </li>
             <?php
             }
             ?>
@@ -39,13 +39,13 @@
         <?php
         if(!isset($_SESSION['userID'])){
             ?>
-            <form class="form-inline my-2 my-lg-0" action="presentation/views/login/Login.php">
+            <form class="form-inline my-2 my-lg-0" action="/Milestone/presentation/views/login/Login.php">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log In</button>
             </form>
         <?php
         }else{
             ?>
-            <form class="form-inline my-2 my-lg-0" action="presentation/views/login/Logout.php">
+            <form class="form-inline my-2 my-lg-0" action="/Milestone/presentation/views/login/Logout.php">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button>
             </form>
         <?php

@@ -1,17 +1,16 @@
 <?php
 require_once '../../../Autoloader.php';
-session_start();
+require_once '../../../header.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 $id = $_POST['productID'];
-echo $id;
 if(isset($_SESSION['cart'])){
     $c = $_SESSION['cart'];
 }else{
     if(isset($_SESSION['userID'])){
         $c = new Cart($_SESSION['userID']);
     }else{
-        echo "Please log in first <br>";
+        echo "<h2>Please log in first</h2>". "<br>";
         exit;
     }
 
@@ -19,12 +18,8 @@ if(isset($_SESSION['cart'])){
 
 $c->addItem($id);
 $c->calcTotal();
-
-echo "<pre>";
-print_r($_SESSION['cart']);
-echo "</pre>";
-
 $_SESSION['cart'] = $c;
 
-//header("Location: ../views/showCart.php");
+header("Location: ../../views/cart/ShowCart.php");
+
 

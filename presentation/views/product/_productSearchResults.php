@@ -82,7 +82,7 @@ ini_set('display_errors', 1);
             echo "<td>" . $products[$i]['PRODUCTNAME'] . "</td>";
 
             echo "<td>" .
-                "<form action='_productDescription.php' method='post'>" .
+                "<form action='/Milestone/presentation/views/product/_productDescription.php' method='post'>" .
                 "<input type='submit' name='productDescription' id='productDescription' value='Product Description'>".
 
                 "<input type='hidden' name='productID' id='productID' value='$productId'>" .
