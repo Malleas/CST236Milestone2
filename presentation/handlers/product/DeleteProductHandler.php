@@ -7,4 +7,4 @@ $productID = $_POST['productID'];
 $service = new ProductBusinessService();
 
 $service->deleteProduct($productID);
-include 'ProductAdmin.php';
+include '../../views/product/ProductAdmin.php';

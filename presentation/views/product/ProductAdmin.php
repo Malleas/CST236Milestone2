@@ -77,7 +77,7 @@ $products = $service->getAllProducts();
             "</form>".
             "</td>";
         echo "<td>".
-            "<form action='DeleteProductHandler.php' method='post'>" .
+            "<form action='../../handlers/product/DeleteProductHandler.php' method='post'>" .
             "<input type='submit' name='Delete' id='Delete' value='Delete'>".
             "<input type='hidden' name='productID' id='productID' value='$productId'>".
             "</form>".

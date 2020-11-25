@@ -27,7 +27,7 @@ $product = $service->findProductByID($productID);
             echo "<img class='card-img-top' src='https://picsum.photos/200' alt='Card image cap'>";
             echo "<p class='card=text'>".$product->getDescription()."</p>";
             echo "<p class='card=text'>"."$".$product->getPrice()."</p>";
-            echo "<a href='../searchPortal/_productSearchResults.php' class='card-link'>Products</a>";
+            echo "<a href='_productSearchResults.php' class='card-link'>Products</a>";
 
         ?>
     </div>

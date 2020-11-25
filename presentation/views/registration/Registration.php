@@ -25,7 +25,7 @@ require_once '../../../Autoloader.php';
 </head>
 <body>
 <h1>Registration</h1>
-    <form class="inputForm" action="RegistrationHandler.php" method="post">
+    <form class="inputForm" action="../../handlers/user/RegistrationHandler.php" method="post">
         <div class="form-group">
             <label for="firstName">First Name</label>
             <input type="text" class="form-control" id="firstName" name="firstName">

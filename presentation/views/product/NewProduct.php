@@ -27,7 +27,7 @@ require_once  '../../../Autoloader.php';
 </head>
 <body>
 <h1>Add New Item</h1>
-    <form class="inputForm" action="NewProductHandler.php" method="post">
+    <form class="inputForm" action="../../handlers/product/NewProductHandler.php" method="post">
         <div class="form-group">
             <label for="productName">Product Name</label>
             <input type="text" class="form-control" id="productName" name="productName">

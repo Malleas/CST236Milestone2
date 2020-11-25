@@ -1,6 +1,7 @@
 <?php
-include_once  "../../../header.php";
-require_once "../../../Autoloader.php";
+include_once '../../../header.php';
+require_once '../../../Autoloader.php';
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -58,6 +59,7 @@ ini_set('display_errors', 1);
     <thead>
     <tr>
         <th>Product ID</th>
+        <th></th>
         <th>Product Name</th>
         <th>Product Description</th>
         <th>Price</th>
@@ -68,12 +70,19 @@ ini_set('display_errors', 1);
     if($_SESSION['products'] != null){
         $products = $_SESSION['products'];
         for ($i = 0; $i < count($products); $i++) {
+            $productId = $products[$i]['ID'];
             echo "<tr>";
             echo "<td>" . $products[$i]['ID'] . "</td>";
+            echo "<td>".
+                "<form action='../../handlers/cart/addToCart.php' method='post'>" .
+                "<input type='submit' name='Add' id='Add' value='Add'>".
+                "<input type='hidden' name='productID' id='productID' value='$productId'>".
+                "</form>".
+                "</td>";
             echo "<td>" . $products[$i]['PRODUCTNAME'] . "</td>";
-            $productId = $products[$i]['ID'];
+
             echo "<td>" .
-                "<form action='../product/_productDescription.php' method='post'>" .
+                "<form action='_productDescription.php' method='post'>" .
                 "<input type='submit' name='productDescription' id='productDescription' value='Product Description'>".
 
                 "<input type='hidden' name='productID' id='productID' value='$productId'>" .
@@ -85,7 +94,7 @@ ini_set('display_errors', 1);
         }
 
     }else{
-        include 'Search.html';
+        include '../../../index.php';
     }
 
 

@@ -23,7 +23,7 @@ include_once "header.php";
 </head>
 <body>
 <h1>Product Search</h1>
-<form class="searchBox" action="presentation/views/searchPortal/SearchHandler.php" method="post">
+<form class="searchBox" action="presentation/handlers/product/SearchHandler.php" method="post">
     <div class="form-group">
         <label for="productName">Product Name</label>
         <input type="text" class="form-control" name="productName" id="productName" aria-describedby="nameHelp">

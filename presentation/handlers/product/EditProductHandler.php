@@ -10,6 +10,6 @@ $price = $_POST['price'];
 $service = new ProductBusinessService();
 
 $service->updateProduct($productID, $productName, $description, $price);
-include 'ProductAdmin.php';
+include '../../views/product/ProductAdmin.php';
 
 

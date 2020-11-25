@@ -45,6 +45,28 @@ class UserDataService
         }
     }
 
+    public function findUserByUsername($u)
+    {
+        $db = new Database();
+        $conn = $db->getConnection();
+        $query = "Select * From Users where USERNAME = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $u);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+            return null;
+        } else {
+            $users = Array();
+            while ($user = $result->fetch_assoc()){
+                array_push($users, $user);
+            }
+            $u = new User($users[0]["ID"], $users[0]["FIRSTNAME"], $users[0]["LASTNAME"], $users[0]["ROLE"], $users[0]["USERNAME"], $users[0]["PASSWORD"]);
+            return $u;
+        }
+    }
+
     public function updateUser($id, $f, $l, $r, $u, $p){
         $db = new Database();
         $conn = $db->getConnection();

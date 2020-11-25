@@ -2,6 +2,7 @@
 include_once '../../../header.php';
 require_once '../../../Autoloader.php';
 
+
 $productName = $_POST['productName'];
 $description = $_POST['description'];
 $price = $_POST['price'];
@@ -16,19 +17,19 @@ if ( $productName != null && $description == null && $price == null && $navSearc
     $products = $service->findProductByName($productName);
     $_SESSION['products'] = $products;
     $_SESSION['principal'] = true;
-    include '_productSearchResults.php';
+    include '../../views/product/_productSearchResults.php';
 }elseif ($productName == null && $description != null && $price == null && $navSearch == null){
     $products = Array();
     $products = $service->findProductByDescription($description);
     $_SESSION['products'] = $products;
     $_SESSION['principal'] = true;
-    include '_productSearchResults.php';
+    include '../../views/product/_productSearchResults.php';
 }elseif ($productName == null && $description == null && $price != null && $navSearch == null){
     $products = Array();
     $products = $service->findProductByPrice($price);
     $_SESSION['products'] = $products;
     $_SESSION['principal'] = true;
-    include '_productSearchResults.php';
+    include '../../views/product/_productSearchResults.php';
 }else if($productName == null && $description == null && $price == null && $navSearch != null){
     $products = Array();
     $products = $service->findProductByName($navSearch);
@@ -37,12 +38,12 @@ if ( $productName != null && $description == null && $price == null && $navSearc
     }
     $_SESSION['products'] = $products;
     $_SESSION['principal'] = true;
-    include '_productSearchResults.php';
+    include '../../views/product/_productSearchResults.php';
 }else{
     $products = Array();
     $products = $service->getAllProducts();
     $_SESSION['products'] = $products;
     $_SESSION['principal'] = true;
-    include "_productSearchResults.php";
+    include '../../views/product/_productSearchResults.php';
 }
 

@@ -34,7 +34,7 @@ $product = $service->findProductByID($productID);
 </head>
 <body>
 <h1>Edit Product</h1>
-<form class="inputForm" action="EditProductHandler.php" method="post">
+<form class="inputForm" action="../../handlers/product/EditProductHandler.php" method="post">
     <div class="form-group">
         <input type="hidden" class="form-control" id="productID" name="productID" value="<?php echo $product->getId() ?>" >
     </div>

@@ -19,6 +19,14 @@ class UserBusinessService
         return $user;
     }
 
+    public function findUserByUsername($u)
+    {
+        $user = array();
+        $service = new UserDataService();
+        $user = $service->findUserByUsername($u);
+        return $user;
+    }
+
     public function updateUser($id, $f, $l, $r, $u, $p)
     {
         $service = new UserDataService();

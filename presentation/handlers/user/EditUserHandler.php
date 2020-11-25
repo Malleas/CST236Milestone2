@@ -12,4 +12,4 @@ $password = $_POST['password'];
 $service = new UserBusinessService();
 
 $service->updateUser($userID, $firstName, $lastName, $role, $username, $password);
-include "UserAdmin.php";
+include "../../views/user/UserAdmin.php";

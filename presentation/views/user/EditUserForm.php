@@ -33,7 +33,7 @@ $user = $service->findUserByID($userID);
 </head>
 <body>
 <h1>Edit User</h1>
-<form class="inputForm" action="EditUserHandler.php" method="post">
+<form class="inputForm" action="../../handlers/user/EditUserHandler.php" method="post">
     <div class="form-group">
         <input type="hidden" class="form-control" id="userID" name="userID" value="<?php echo $user->getId() ?>" >
     </div>

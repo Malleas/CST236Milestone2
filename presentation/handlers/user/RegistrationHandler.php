@@ -15,6 +15,6 @@ $service = new UserBusinessService();
 if($service->createUser($firstName, $lastName, $username, $password)){
     include '../../../index.php';
 }else{
-    include '../login/LoginFailed.php';
+    include '../../views/login/LoginFailed.php';
 }
 

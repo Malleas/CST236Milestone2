@@ -6,4 +6,4 @@ $userID = $_POST['userID'];
 $service = new UserBusinessService();
 
 $service->deleteUser($userID);
-include 'UserAdmin.php';
+include '../../views/user/UserAdmin.php';

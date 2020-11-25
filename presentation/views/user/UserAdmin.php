@@ -79,7 +79,7 @@ $users = $service->getAllUsers();
             "</form>".
             "</td>";
         echo "<td>".
-            "<form action='DeleteUserHandler.php' method='post'>" .
+            "<form action='../../handlers/user/DeleteUserHandler.php' method='post'>" .
             "<input type='submit' name='Delete' id='Delete' value='Delete'>".
             "<input type='hidden' name='userID' id='userID' value='$userID'>".
             "</form>".
