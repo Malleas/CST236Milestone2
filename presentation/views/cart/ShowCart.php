@@ -127,7 +127,7 @@ $user = $userService->findUserByID($userID);
 </script>
 <script>
     function checkout() {
-        location.href = "CheckoutHandler.php"
+        location.href = "Checkout.php"
     }
 </script>
 

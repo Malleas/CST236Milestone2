@@ -48,6 +48,15 @@
             <form class="form-inline my-2 my-lg-0" action="/Milestone/presentation/views/login/Logout.php">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button>
             </form>
+
+                <form class="form=inline my-2 my-lg-0" action="/Milestone/presentation/views/cart/ShowCart.php">
+
+                    <button type="submit">
+                        <img src="/Milestone/images/cart.png" height="40" width="40">
+                    </button>
+                </form>
+
+
         <?php
         }
         ?>
