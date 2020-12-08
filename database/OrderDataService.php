@@ -65,4 +65,25 @@ class OrderDataService
         }
 
     }
+
+    public function getOrderByID($orderID){
+        $query = "Select * from ORDERS 
+                  inner join ORDER_DETAILS OD on ORDERS.ID = OD.ORDERS_ID
+                  inner join PRODUCTS P on OD.PRODUCTS_ID = P.ID
+                  where ORDERS.ID = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("s", $orderID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+            return null;
+        } else {
+            $completedOrder = array();
+            while ($order = $result->fetch_assoc()) {
+                array_push($completedOrder, $order);
+            }
+             return $completedOrder;
+        }
+    }
 }

@@ -24,6 +24,7 @@
                         <a class="dropdown-item" href="/Milestone/presentation/views/product/ProductAdmin.php">Products</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/Milestone/presentation/views/product/NewProduct.php">Add New Product</a>
+                        <a class="dropdown-item" href="/Milestone/presentation/views/reports/Sales.php">Reports</a>
                     </div>
                 </li>
             <?php

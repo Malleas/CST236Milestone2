@@ -37,11 +37,14 @@ class OrdersBusinessService
             $conn->rollback();
             echo "There was a problem processing your order <BR>";
             return 0;
-
-
         }
+    }
 
-
+    public function getOrderByID($orderID){
+        $db = new Database();
+        $conn = $db->getConnection();
+        $orderService = new OrderDataService($conn);
+        return $orderService->getOrderByID($orderID);
     }
 
 }
