@@ -129,6 +129,8 @@ $fmt = new NumberFormatter('us_US', NumberFormatter::CURRENCY);
             <br/>
         </div>
     </div>
+    <br/>
+
     <?php echo "<h3>Total Price" . $fmt->formatCurrency($c->getTotalPrice(), "USD") . "</h3>" ?>
     <button type="submit" class="btn btn-primary">Purchase</button>
     <input type="button" class="btn btn-secondary" value="Continue Shopping" onclick="continueShopping()">
@@ -139,6 +141,12 @@ $fmt = new NumberFormatter('us_US', NumberFormatter::CURRENCY);
 <script>
     function continueShopping() {
         location.href = "../product/_productSearchResults.php"
+    }
+</script>
+
+<script>
+    function applyDiscount() {
+        location.href = "../../handlers/cart/DiscountHandler.php"
     }
 </script>
 

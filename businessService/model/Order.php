@@ -7,6 +7,7 @@ class Order
     private $date;
     private $addressID;
     private $userID;
+    private $discountID;
 
     /**
      * Order constructor.
@@ -14,14 +15,34 @@ class Order
      * @param $date
      * @param $addressID
      * @param $userID
+     * @param $discountID
      */
-    public function __construct($id, $date, $addressID, $userID)
+    public function __construct($id, $date, $addressID, $userID, $discountID)
     {
         $this->id = $id;
         $this->date = $date;
         $this->addressID = $addressID;
         $this->userID = $userID;
+        $this->discountID = $discountID;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDiscountID()
+    {
+        return $this->discountID;
+    }
+
+    /**
+     * @param mixed $discountID
+     */
+    public function setDiscountID($discountID)
+    {
+        $this->discountID = $discountID;
+    }
+
+
 
     /**
      * @return mixed

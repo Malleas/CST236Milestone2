@@ -3,7 +3,7 @@
 
 class OrdersBusinessService
 {
-    public function proccessOrder($userID, $cart, $totalProducts, $n, $expMonth, $expYear, $cvv){
+    public function proccessOrder($userID, $cart, $totalProducts, $n, $expMonth, $expYear, $cvv, $discountID){
         $db = new Database();
         $conn = $db->getConnection();
         $orderService = new OrderDataService($conn);
@@ -15,7 +15,7 @@ class OrdersBusinessService
         //get address for user
         $address = $addressService->getAddress($userID);
         //create a new order using address and userID
-        $orderStatus = $orderService->createOrder($address->getId(), $userID);
+        $orderStatus = $orderService->createOrder($address->getId(), $userID, $discountID);
         //get order ID after creation
         $order = $orderService->getOrderID($userID);
         $orderID = $order->getId();
@@ -45,6 +45,15 @@ class OrdersBusinessService
         $conn = $db->getConnection();
         $orderService = new OrderDataService($conn);
         return $orderService->getOrderByID($orderID);
+    }
+
+    public function checkDiscount($userID, $discountID){
+        $db = new Database();
+        $conn = $db->getConnection();
+        $orderService = new OrderDataService($conn);
+        return $orderService->checkIfDiscountUsed($userID, $discountID);
+
+
     }
 
 }

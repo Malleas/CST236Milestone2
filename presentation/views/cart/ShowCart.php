@@ -37,6 +37,11 @@ $user = $userService->findUserByID($userID);
 
 
     <style>
+        .inputForm {
+            width: 500px;
+            margin: 0 auto;
+
+        }
         #products {
             font-family: Arial, Helvetica, sans-serif;
             border-collapse: collapse;
@@ -113,7 +118,37 @@ $user = $userService->findUserByID($userID);
 
     </tbody>
 </table>
+<form class="inputForm" method="post" action="../../handlers/cart/DiscountHandler.php">
+    <div class="form-row">
+        <div class="col">
+            <input type="text" class="form-control" id="discountCode" name="discountCode" placeholder="Discount Code">
+        </div>
+        <div class="col">
+            <input type="submit" class="btn btn-info" value="Apply">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col" align="center">
+            <p>
+                <?php
+                if(isset($_SESSION['discountApplied'])){
+                    $d = $_SESSION['discountApplied'];
+                    if($d == 0){
+                        echo "No discounts applied.";
+                    }else if($d == 1){
+                        echo "Discount applied!";
+                    }else{
+                        echo "Discount already used.";
+                    }
+                }
+                ?>
+            </p>
+        </div>
+    </div>
+</form>
 <?php echo "<h3>Total Price" . $fmt->formatCurrency($c->getTotalPrice(), "USD") . "</h3>" ?>
+
+
 
 <input type="button" class="btn btn-primary" value="Continue Shopping" onclick="continueShopping()">
 

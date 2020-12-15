@@ -15,11 +15,11 @@ class OrderDataService
     }
 
 
-    public function createOrder($addressID, $userID)
+    public function createOrder($addressID, $userID, $discountId)
     {
-        $query = "Insert into ORDERS (ADDRESSES_ID, ADDRESSES_USERS_ID) VALUE (?,?)";
+        $query = "Insert into ORDERS (ADDRESSES_ID, ADDRESSES_USERS_ID, DISCOUNTS_ID) VALUE (?,?,?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("ss", $addressID, $userID);
+        $stmt->bind_param("sss", $addressID, $userID, $discountId);
 
 
         if ($stmt->execute()) {
@@ -45,7 +45,7 @@ class OrderDataService
             while ($order = $result->fetch_assoc()) {
                 array_push($orders, $order);
             }
-            $o = new Order($orders[0]['ID'], $orders[0]['DATE'], $orders[0]['ADDRESSES_ID'], $orders[0]['ADDRESSES_USERS_ID']);
+            $o = new Order($orders[0]['ID'], $orders[0]['DATE'], $orders[0]['ADDRESSES_ID'], $orders[0]['ADDRESSES_USERS_ID'], $orders[0]['DISCOUNTS_ID']);
             return $o;
         }
     }
@@ -85,5 +85,20 @@ class OrderDataService
             }
              return $completedOrder;
         }
+    }
+
+    public function checkIfDiscountUsed($userID, $discountID){
+        $query = "Select * from ORDERS where ADDRESSES_USERS_ID = ? and DISCOUNTS_ID = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("ss", $userID, $discountID);
+        $stmt->execute();
+        $results = $stmt->get_result();
+
+        if($results->num_rows == 0){
+            return 0;
+        }else{
+            return 1;
+        }
+
     }
 }

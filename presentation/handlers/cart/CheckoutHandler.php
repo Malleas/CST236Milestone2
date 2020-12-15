@@ -11,6 +11,7 @@ $expYear = $_POST['expirationYear'];
 $cvv = $_POST['cvv'];
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
+$discountCodeID = $_SESSION['discountCodeID'];
 $totalProducts = 0;
 $orderService = new OrdersBusinessService();
 
@@ -18,7 +19,7 @@ foreach ($c->getItems() as $productID => $qty){
     $totalProducts ++;
 }
 
-$transResults = $orderService->proccessOrder($userID, $c, $totalProducts, $number, $expMonth, $expYear, $cvv);
+$transResults = $orderService->proccessOrder($userID, $c, $totalProducts, $number, $expMonth, $expYear, $cvv, $discountCodeID);
 
 if($transResults == 1){
     unset($_SESSION['cart']);
